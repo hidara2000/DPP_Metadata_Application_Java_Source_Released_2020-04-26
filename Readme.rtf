@@ -1,0 +1,239 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\ftech\fcharset77 Symbol;
+\f3\froman\fcharset0 TimesNewRomanPS-BoldMT;\f4\fswiss\fcharset0 Arial-BoldItalicMT;\f5\froman\fcharset0 TimesNewRomanPS-BoldItalicMT;
+\f6\froman\fcharset0 TimesNewRomanPS-ItalicMT;\f7\fmodern\fcharset0 Courier-Oblique;\f8\fmodern\fcharset0 Courier;
+\f9\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+{\info
+{\author Andy M}}\paperw11905\paperh16837\margl1134\margr1134\margb1134\margt1134\vieww21300\viewh17440\viewkind1\viewscale136
+\hyphauto1\hyphfactor90
+\deftab709
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f0\b\fs28 \cf2 DPP Metadata App Source Code Readme\
+\pard\pardeftab709\ri-1\sa120\partightenfactor0
+
+\f1\b0\fs24 \cf2 The DPP Metadata Application was a desktop application for Windows and Mac, designed for inserting UK DPP metadata into MXF video files. It was formed of 3 functional layers:\
+\pard\pardeftab709\li720\fi-360\ri-1\sa120\partightenfactor0
+\ls1\ilvl0
+\f2 \cf2 \'a5	
+\f1 A user interface written in Adobe AIR\
+\ls1\ilvl0
+\f2 \'a5	
+\f1 A business logic layer written in Java\
+\ls1\ilvl0
+\f2 \'a5	
+\f1 MXF handling using BMXLib - {\field{\*\fldinst{HYPERLINK "http://sourceforge.net/projects/bmxlib/"}}{\fldrslt http://sourceforge.net/projects/bmxlib/}}\
+\pard\pardeftab709\ri-1\sa120\partightenfactor0
+\cf2 \
+The application was provided to the market as a short term measure while commercial tools were developed. It is no longer updated or supported, and all users are advised to use commercially available tools, such as those listed at {\field{\*\fldinst{HYPERLINK "https://www.thedpp.com/metadata-apps"}}{\fldrslt \ul https://www.thedpp.com/metadata-apps}}\
+This folder contains an export of the source code of the business logic layer of the DPP Metadata App, and is provided for informative purposes to any vendor or implementer who might find it useful. We make no guarantees that it can be compiled or used, and indeed we would advise against doing so.\
+The user interface layer is based on technologies which are largely obsolete, and as such the code has not been provided. If you have a strong interest in it, please contact the DPP.\
+The media handling layer was an implementation of BMXLib, which is an active project and available at {\field{\*\fldinst{HYPERLINK "http://sourceforge.net/projects/bmxlib/"}}{\fldrslt http://sourceforge.net/projects/bmxlib/}}\
+What follows is some overview information previously provided with the DPP business logic layer. It may not be up to date or complete, and is provided as-is.\
+This folder also contains the user guide information for the desktop app, as previously provided on the DPP website. It is provided for context only, and it is not possible to rebuild a functioning version of the app using the source in this folder.\
+\
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f0\b\fs28 \cf2 DPP Metadata App Java Layer Overview
+\f3 \
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f4\i \cf2 Introduction
+\f5 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0\b0\fs24 \cf2 The DPP Java application extracts metadata from MXF video files and constructs xml files conforming to the UK DPP xsd. Given an xml file it can perform validation at different levels including just validating the xml against the schema, validation of individual sections such as audio, video, editorial etc or full validation against the DPP specification. It can also be used to transwrap a conforming video file into a DPP MXF file with xml sidecar.\
+\
+The java application can be used either standalone on the command line (the only option on linux) or it may be called from the associated Adobe AIR application on OS X or Windows.\
+\
+It requires the BMX libraries to be present and on the PATH.\
+\
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f4\i\b\fs28 \cf2 Command line usage
+\f5 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0\b0\fs24 \cf2 \
+Command is specified using the -c option and the commands are:-\
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f6\i\fs20 \cf2 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f7 \cf2 EXTRACT \'96 extract info from mxf file and generate (partially or fully) populated xml file
+\f6 \
+\
+
+\f7 GENERATE_MXF_AND_XML \'96 from source mxf and xml generate transwrapped file and sidecar xml
+\f1\i0 \
+\
+
+\f7\i GENERATE_SIDECAR \'96 given a fully encoded uk dpp mxf file regenerate the sidecar xml file
+\f6 \
+\
+
+\f7 VALIDATE_XML \'96 validate xml file against the xsd
+\f6 \
+\
+
+\f7 VALIDATE_DPP \'96 validate the xml and mxf file against the full DPP specification
+\f6 \
+\
+
+\f7 VALIDATE_EDITORIAL \'96 validate only editorial section of xml file
+\f6 \
+\
+
+\f7 VALIDATE_VIDEO \'96 validate only video section of xml file
+\f6 \
+\
+
+\f7 VALIDATE_TIMECODE \'96 validate only timecode section of xml file
+\f6 \
+\
+
+\f7 VALIDATE_OTHERS \'96 validate only others (ie none of others) section of xml file
+\f6 \
+\
+
+\f7 VALIDATE_AUDIO \'96 validate only audio section of xml file
+\f6 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0\fs24 \cf2 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f6\i \cf2 Examples:-\
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0 \cf2 \
+1) validating an xml file against the xsd and outputting results to report file (report.txt)\
+\
+java -jar dpp-0.0.1-SNAPSHOT-jar-with-dependencies.jar -cVALIDATE_XML -xtest1.xml -rreport.txt\
+\
+\
+2) extracting a partially populated xml file from an mxf file and outputting results to stdout\
+\
+java -jar dpp-0.0.1-SNAPSHOT-jar-with-dependencies.jar -cEXTRACT -xextracted.xml -fas11_avci100_1080i25_stereo_pcm.mxf\
+\
+3) transwrapping\
+\
+java -jar  dpp-0.0.1-SNAPSHOT-jar-with-dependencies.jar -cGENERATE_MXF_AND_XML -fas11_avci100_1080i25_stereo_pcm.mxf -xgoodInputXml.xml -ssidecar.xml -ttranswrapped.mxf\
+\
+this will generate (and delete at the end):\
+	validAgainstSchema_as11core.txt\
+	validAgainstSchema_seg.txt\
+	validAgainstSchema_ukdpp.txt\
+to be used as input to transwrapping. After transwrapping we should see:\
+	transwrapped.mxf\
+	sidecar.xml\
+\
+If the transwrapped file already exists then you need to specify the overwrite flag -o to overwrite it\
+\
+\
+The status report file will be output to standard out if you don't specify a -r filename. The output is along these lines:\
+\
+Mxf file type: UNKNOWN\
+Command result: SUCCESS\
+Additional mxf file information:\
+    edit rate: 25/1\
+    duration: 7600\
+    total number of audio channels: 16\
+    HD: true\
+System errors:\
+    Exception caught doing something etc etc - probably not worth reporting these to the user\
+Validation errors:\
+    Invalid audio bit depth (0)\
+    Incorrect number of audio tracks found (2), acceptible values are 4 or 16 for HD content.\
+    Total Programme Duration does not exceed duration of parts for programme delivered in multiple files\
+    FPA version must at least 3.4\
+Validation warnings:\
+    Invalid Part. Part must start at least two minutes after end of previous part\
+BMX Messages:\
+\
+Command-line prefixes:\
+\
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\fs20 \cf2 	
+\f7\i COMMAND_PREFIX
+\f8\i0  = "-c"
+\f1 \
+	
+\f7\i MXF_FILE_PREFIX
+\f8\i0  = "-f"
+\f1 \
+	
+\f7\i XML_FILE_PREFIX
+\f8\i0  = "-x"
+\f1 \
+	
+\f7\i TRANSWRAPPED_MXF_FILE_PREFIX
+\f8\i0  = "-t"
+\f1 \
+	
+\f7\i SIDECAR_XML_FILE_PREFIX
+\f8\i0  = "-s"
+\f1 \
+	
+\f7\i REPORT_FILE_PREFIX
+\f8\i0  = "-r"
+\f1 \
+	
+\f7\i OVERWRITE_FLAG
+\f8\i0  = "-o"
+\f1 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\fs24 \cf2 \
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f4\i\b\fs28 \cf2 Program Structure
+\f5 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0\b0\fs24 \cf2 \
+The main entry point to the application is a classic command-line app with a 
+\f9\b\fs20 public
+\f8\b0  
+\f9\b static
+\f8\b0  
+\f9\b void
+\f8\b0  main(String[] args) 
+\f1\fs24 and should be pretty easy to follow\
+\
+As far as possible all interactions with the underlying BMX library are abstracted to classes under the bmx package.\
+\
+There is a test suite with good coverage (approx 300 tests at time of writing) written in JUnit with Easymock where necessary but mocking has been kept to a minimum.\
+\
+Much of the code is concerned with validation against the DPP spec and these validation classes are found in the validators package.\
+\
+A lot of mapping between AS11 integer values and text alternatives is required and these are generally handled in the valuemaps package.\
+\
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f4\i\b\fs28 \cf2 Progress Indicator
+\f5 \
+\pard\pardeftab709\ri-1\partightenfactor0
+
+\f1\i0\b0\fs24 \cf2 The application reports progress as a percentage for the more time consuming activities.\
+\
+For transwrapping it makes the assumption that the transwrapped file will be approximately the same size as the original MXF file and uses this to calculate the percentage complete, this is run in a separate thread and the code is in FileSizeProgress.\
+\
+For generating an md5 checksum it generates a test file and runs the md5 calculation on this. The estimated time is then calculated using the ratio of the test file and the MXF file. This progress is also run in a separate thread and the code is in Md5Progress.\
+\pard\pardeftab709\ri-1\sa120\partightenfactor0
+\cf2 \
+\pard\pardeftab709\ri-1\sb240\sa120\partightenfactor0
+
+\f4\i\b\fs28 \cf2 BMX Library
+\f5 \
+\pard\pardeftab709\ri-1\sa120\partightenfactor0
+
+\f1\i0\b0\fs24 \cf2 This is hosted on sourceforge at {\field{\*\fldinst{HYPERLINK "http://sourceforge.net/projects/bmxlib/"}}{\fldrslt http://sourceforge.net/projects/bmxlib/}}\
+\
+}

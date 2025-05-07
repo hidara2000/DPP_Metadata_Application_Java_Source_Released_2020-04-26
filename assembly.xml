@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <fileSets>
+    <!-- assets -->
+    <fileSet>
+      <directory>${basedir}</directory>
+      <outputDirectory>/</outputDirectory>
+      <excludes>
+        <exclude>*.*</exclude>
+      </excludes>
+      <includes>
+        <include>src/main/resources/java-config.xml</include>          
+      </includes>
+    </fileSet>
+  </fileSets>
+</assembly>

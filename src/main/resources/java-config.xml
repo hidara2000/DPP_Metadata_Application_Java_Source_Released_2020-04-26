@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+	createdBy:
+		Darren Greaves in Eclipse.
+
+	defaultShimNameHD:
+		Shimname to write into XML file for HD files.
+
+	defaultShimNameSD:
+		Shimname to write into XML file for SD files.
+
+	shimVersion:
+		The version of the Shim supported by this version of the application.
+
+	businessLogicVersion:
+		The supported version of the business logic.
+-->
+<configuration>
+	<defaultShimNameHD>AS-11 UK DPP HD Shim, DELIVERY SPEC REV.2.1, DPP METADATA APPLICATION VER.1.1</defaultShimNameHD>
+	<defaultShimNameSD>AS-11 UK DPP SD Shim, DELIVERY SPEC REV.2.1, DPP METADATA APPLICATION VER.1.1</defaultShimNameSD>
+	<shimVersion>2</shimVersion>
+	<businessLogicVersion>2.2</businessLogicVersion>
+</configuration>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Digital Production Partnership
+  2012-04-30
+  Richard Jolly, richard.jolly@bbc.co.uk
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.digitalproductionpartnership.co.uk/ns/as11/2012" xmlns:dpp="http://www.digitalproductionpartnership.co.uk/ns/as11/2012">
+  <!-- 1. DESCRIPTIVE METADATA -->
+  <xs:element name="Editorial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:SeriesTitle"/>
+        <xs:element ref="dpp:ProgrammeTitle"/>
+        <xs:element ref="dpp:EpisodeTitleNumber"/>
+        <xs:element ref="dpp:ProductionNumber"/>
+        <xs:element ref="dpp:Synopsis"/>
+        <xs:element ref="dpp:Originator"/>
+        <xs:element ref="dpp:CopyrightYear"/>
+        <xs:element minOccurs="0" ref="dpp:OtherIdentifier"/>
+        <xs:element minOccurs="0" ref="dpp:OtherIdentifierType"/>
+        <xs:element minOccurs="0" ref="dpp:Genre"/>
+        <xs:element minOccurs="0" ref="dpp:Distributor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeriesTitle" type="dpp:token-text-dt"/>
+  <xs:element name="ProgrammeTitle" type="dpp:token-text-dt"/>
+  <xs:element name="EpisodeTitleNumber" type="dpp:token-text-dt"/>
+  <xs:element name="ProductionNumber" type="dpp:identifier-dt"/>
+  <xs:element name="Synopsis" type="dpp:token-text-dt"/>
+  <xs:element name="Originator" type="dpp:token-text-dt"/>
+  <xs:element name="CopyrightYear" type="dpp:year-dt"/>
+  <xs:element name="OtherIdentifier" type="dpp:identifier-dt"/>
+  <xs:element name="OtherIdentifierType" type="dpp:token-text-dt"/>
+  <xs:element name="Genre" type="dpp:token-text-dt"/>
+  <xs:element name="Distributor" type="dpp:token-text-dt"/>
+  <!-- 2. TECHNICAL METADATA -->
+  <xs:element name="Technical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:ShimName"/>
+        <xs:element ref="dpp:Video"/>
+        <xs:element ref="dpp:Audio"/>
+        <xs:element ref="dpp:Timecodes"/>
+        <xs:element ref="dpp:AccessServices"/>
+        <xs:element ref="dpp:Additional"/>
+        <xs:element ref="dpp:ContactInformation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShimName" type="dpp:shim-name-dt"/>
+  <xs:element name="Video">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:VideoBitRate"/>
+        <xs:element ref="dpp:VideoCodec"/>
+        <xs:element ref="dpp:VideoCodecParameters"/>
+        <xs:element ref="dpp:PictureFormat"/>
+        <xs:element ref="dpp:AFD"/>
+        <xs:element minOccurs="0" ref="dpp:PictureRatio"/>
+        <xs:element ref="dpp:ThreeD"/>
+        <xs:element minOccurs="0" ref="dpp:ThreeDType"/>
+        <xs:element minOccurs="0" ref="dpp:ProductPlacement"/>
+        <xs:element minOccurs="0" ref="dpp:FPAPass"/>
+        <xs:element minOccurs="0" ref="dpp:FPAManufacturer"/>
+        <xs:element minOccurs="0" ref="dpp:FPAVersion"/>
+        <xs:element minOccurs="0" ref="dpp:VideoComments"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VideoBitRate" type="dpp:videobitrate-dt"/>
+  <xs:element name="VideoCodec" type="dpp:videocodec-dt"/>
+  <xs:element name="VideoCodecParameters" type="dpp:videocodecparameters-dt"/>
+  <xs:element name="PictureFormat" type="dpp:pictureformat-dt"/>
+  <xs:element name="AFD" type="dpp:afd-dt"/>
+  <xs:element name="PictureRatio" type="dpp:pictureratio-dt"/>
+  <xs:element name="ThreeD" type="xs:boolean"/>
+  <xs:element name="ThreeDType" type="dpp:threedtype-enum"/>
+  <xs:element name="ProductPlacement" type="xs:boolean"/>
+  <xs:element name="FPAPass" type="dpp:fpapass-enum"/>
+  <xs:element name="FPAManufacturer" type="dpp:token-text-dt"/>
+  <xs:element name="FPAVersion" type="dpp:token-text-dt"/>
+  <xs:element name="VideoComments" type="dpp:token-text-dt"/>
+  <xs:element name="Audio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:AudioSamplingFrequency"/>
+        <xs:element ref="dpp:AudioBitDepth"/>
+        <xs:element ref="dpp:AudioCodecParameters"/>
+        <xs:element ref="dpp:AudioTrackLayout"/>
+        <xs:element ref="dpp:PrimaryAudioLanguage"/>
+        <xs:element ref="dpp:SecondaryAudioLanguage"/>
+        <xs:element ref="dpp:TertiaryAudioLanguage"/>
+        <xs:element ref="dpp:AudioLoudnessStandard"/>
+        <xs:element minOccurs="0" ref="dpp:AudioComments"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AudioSamplingFrequency" type="dpp:audiosamplingfrequency-dt"/>
+  <xs:element name="AudioBitDepth" type="dpp:audiobitdepth-dt"/>
+  <xs:element name="AudioCodecParameters" type="dpp:audiocodecparameters-dt"/>
+  <xs:element name="AudioTrackLayout" type="dpp:audiotracklayout-enum"/>
+  <xs:element name="PrimaryAudioLanguage" type="dpp:language-dt"/>
+  <xs:element name="SecondaryAudioLanguage" type="dpp:language-dt"/>
+  <xs:element name="TertiaryAudioLanguage" type="dpp:language-dt"/>
+  <xs:element name="AudioLoudnessStandard" type="dpp:audioloudnessstandard-enum"/>
+  <xs:element name="AudioComments" type="dpp:token-text-dt"/>
+  <xs:element name="Timecodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:LineUpStart"/>
+        <xs:element ref="dpp:IdentClockStart"/>
+        <xs:element ref="dpp:Parts"/>
+        <xs:element ref="dpp:TotalNumberOfParts"/>
+        <xs:element ref="dpp:TotalProgrammeDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LineUpStart" type="dpp:timecode-dt"/>
+  <xs:element name="IdentClockStart" type="dpp:timecode-dt"/>
+  <xs:element name="Parts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="dpp:Part"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Part">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:PartNumber"/>
+        <xs:element ref="dpp:PartTotal"/>
+        <xs:element ref="dpp:PartSOM"/>
+        <xs:element ref="dpp:PartDuration"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartNumber" type="dpp:uint16-dt"/>
+  <xs:element name="PartTotal" type="dpp:uint16-dt"/>
+  <xs:element name="PartSOM" type="dpp:timecode-dt"/>
+  <xs:element name="PartDuration" type="dpp:duration-dt"/>
+  <xs:element name="TotalNumberOfParts" type="dpp:uint16-dt"/>
+  <xs:element name="TotalProgrammeDuration" type="dpp:duration-dt"/>
+  <xs:element name="AccessServices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:AudioDescriptionPresent"/>
+        <xs:element minOccurs="0" ref="dpp:AudioDescriptionType"/>
+        <xs:element ref="dpp:ClosedCaptionsPresent"/>
+        <xs:element minOccurs="0" ref="dpp:ClosedCaptionsType"/>
+        <xs:element minOccurs="0" ref="dpp:ClosedCaptionsLanguage"/>
+        <xs:element ref="dpp:OpenCaptionsPresent"/>
+        <xs:element minOccurs="0" ref="dpp:OpenCaptionsType"/>
+        <xs:element minOccurs="0" ref="dpp:OpenCaptionsLanguage"/>
+        <xs:element ref="dpp:SigningPresent"/>
+        <xs:element minOccurs="0" ref="dpp:SignLanguage"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AudioDescriptionPresent" type="xs:boolean"/>
+  <xs:element name="AudioDescriptionType" type="dpp:audiodescriptiontype-enum"/>
+  <xs:element name="ClosedCaptionsPresent" type="dpp:closedcaptionspresent-dt"/>
+  <xs:element name="ClosedCaptionsType" type="dpp:closedcaptionstype-enum"/>
+  <xs:element name="ClosedCaptionsLanguage" type="dpp:language-dt"/>
+  <xs:element name="OpenCaptionsPresent" type="xs:boolean"/>
+  <xs:element name="OpenCaptionsType" type="dpp:opencaptionstype-enum"/>
+  <xs:element name="OpenCaptionsLanguage" type="dpp:language-dt"/>
+  <xs:element name="SigningPresent" type="dpp:signing-enum"/>
+  <xs:element name="SignLanguage" type="dpp:signlanguage-enum"/>
+  <xs:element name="Additional">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:CompletionDate"/>
+        <xs:element minOccurs="0" ref="dpp:TextlessElementExist"/>
+        <xs:element minOccurs="0" ref="dpp:ProgrammeHasText"/>
+        <xs:element minOccurs="0" ref="dpp:ProgrammeTextLanguage"/>
+        <xs:element ref="dpp:AssociatedMediaFilename"/>
+        <xs:element minOccurs="0" ref="dpp:MediaChecksumType"/>
+        <xs:element minOccurs="0" ref="dpp:MediaChecksumValue"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompletionDate" type="xs:date"/>
+  <xs:element name="TextlessElementExist" type="xs:boolean"/>
+  <xs:element name="ProgrammeHasText" type="xs:boolean"/>
+  <xs:element name="ProgrammeTextLanguage" type="dpp:language-dt"/>
+  <xs:element name="AssociatedMediaFilename" type="dpp:associatedmediafilename-dt"/>
+  <xs:element name="MediaChecksumType" type="dpp:mediachecksumtype-dt"/>
+  <xs:element name="MediaChecksumValue" type="dpp:mediachecksumvalue-dt"/>
+  <xs:element name="ContactInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:ContactEmail"/>
+        <xs:element ref="dpp:ContactTelephoneNumber"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactEmail" type="dpp:token-text-dt"/>
+  <xs:element name="ContactTelephoneNumber" type="dpp:token-text-dt"/>
+  <!-- DATATYPES -->
+  <xs:simpleType name="uint16-dt">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="65535"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="uint32-dt">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="4294967295"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="language-dt">
+    <xs:restriction base="xs:language">
+      <xs:length value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="token-text-dt">
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="127"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="identifier-dt">
+    <xs:union memberTypes="xs:token xs:anyURI"/>
+  </xs:simpleType>
+  <xs:simpleType name="year-dt">
+    <xs:restriction base="xs:gYear">
+      <xs:pattern value="\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="shim-name-dt">
+    <xs:restriction base="dpp:token-text-dt"/>
+  </xs:simpleType>
+  <xs:simpleType name="timecode-dt">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(([01][0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]:(([01][0-9])|(2[0-4]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="duration-dt">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9][0-9]:[0-5][0-9]:[0-5][0-9]:(([01][0-9])|(2[0-4]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="associatedmediafilename-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <!-- ENUMS -->
+  <xs:simpleType name="fpapass-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Yes"/>
+      <xs:enumeration value="No"/>
+      <xs:enumeration value="Not tested"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="threedtype-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Side by side"/>
+      <xs:enumeration value="Dual"/>
+      <xs:enumeration value="Left eye only"/>
+      <xs:enumeration value="Right eye only"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="audioloudnessstandard-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="EBU R 128"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="audiodescriptiontype-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Control data / Narration"/>
+      <xs:enumeration value="AD Mix"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="closedcaptionstype-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Hard of Hearing"/>
+      <xs:enumeration value="Translation"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="opencaptionstype-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Hard of Hearing"/>
+      <xs:enumeration value="Translation"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="signing-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Yes"/>
+      <xs:enumeration value="No"/>
+      <xs:enumeration value="Signer only"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="signlanguage-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="BSL (British Sign Language)"/>
+      <xs:enumeration value="BSL (Makaton)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Programme">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dpp:Editorial"/>
+        <xs:element ref="dpp:Technical"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- DATATYPES -->
+  <xs:simpleType name="afd-dt">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:complexType name="videobitrate-dt">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+        <xs:attribute name="unit" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token"/>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="videocodec-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="videocodecparameters-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="pictureratio-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="pictureformat-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:complexType name="audiosamplingfrequency-dt">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+        <xs:attribute name="unit" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:token"/>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="audiobitdepth-dt">
+    <xs:restriction base="dpp:uint32-dt"/>
+  </xs:simpleType>
+  <xs:simpleType name="audiocodecparameters-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="closedcaptionspresent-dt">
+    <xs:restriction base="xs:boolean"/>
+  </xs:simpleType>
+  <xs:simpleType name="mediachecksumtype-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="mediachecksumvalue-dt">
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <!-- ENUMS -->
+  <xs:simpleType name="audiotracklayout-enum">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="EBU R 48: 1a"/>
+      <xs:enumeration value="EBU R 48: 1b"/>
+      <xs:enumeration value="EBU R 48: 1c"/>
+      <xs:enumeration value="EBU R 48: 2a"/>
+      <xs:enumeration value="EBU R 48: 2b"/>
+      <xs:enumeration value="EBU R 48: 2c"/>
+      <xs:enumeration value="EBU R 48: 3a"/>
+      <xs:enumeration value="EBU R 48: 3b"/>
+      <xs:enumeration value="EBU R 48: 4a"/>
+      <xs:enumeration value="EBU R 48: 4b"/>
+      <xs:enumeration value="EBU R 48: 4c"/>
+      <xs:enumeration value="EBU R 48: 5a"/>
+      <xs:enumeration value="EBU R 48: 5b"/>
+      <xs:enumeration value="EBU R 48: 6a"/>
+      <xs:enumeration value="EBU R 48: 6b"/>
+      <xs:enumeration value="EBU R 48: 7a"/>
+      <xs:enumeration value="EBU R 48: 7b"/>
+      <xs:enumeration value="EBU R 48: 8a"/>
+      <xs:enumeration value="EBU R 48: 8b"/>
+      <xs:enumeration value="EBU R 48: 8c"/>
+      <xs:enumeration value="EBU R 48: 9a"/>
+      <xs:enumeration value="EBU R 48: 9b"/>
+      <xs:enumeration value="EBU R 48: 10a"/>
+      <xs:enumeration value="EBU R 48: 11a"/>
+      <xs:enumeration value="EBU R 48: 11b"/>
+      <xs:enumeration value="EBU R 48: 11c"/>
+      <xs:enumeration value="EBU R 123: 2a"/>
+      <xs:enumeration value="EBU R 123: 4a"/>
+      <xs:enumeration value="EBU R 123: 4b"/>
+      <xs:enumeration value="EBU R 123: 4c"/>
+      <xs:enumeration value="EBU R 123: 8a"/>
+      <xs:enumeration value="EBU R 123: 8b"/>
+      <xs:enumeration value="EBU R 123: 8c"/>
+      <xs:enumeration value="EBU R 123: 8d"/>
+      <xs:enumeration value="EBU R 123: 8e"/>
+      <xs:enumeration value="EBU R 123: 8f"/>
+      <xs:enumeration value="EBU R 123: 8g"/>
+      <xs:enumeration value="EBU R 123: 8h"/>
+      <xs:enumeration value="EBU R 123: 8i"/>
+      <xs:enumeration value="EBU R 123: 12a"/>
+      <xs:enumeration value="EBU R 123: 12b"/>
+      <xs:enumeration value="EBU R 123: 12c"/>
+      <xs:enumeration value="EBU R 123: 12d"/>
+      <xs:enumeration value="EBU R 123: 12e"/>
+      <xs:enumeration value="EBU R 123: 12f"/>
+      <xs:enumeration value="EBU R 123: 12g"/>
+      <xs:enumeration value="EBU R 123: 12h"/>
+      <xs:enumeration value="EBU R 123: 16a"/>
+      <xs:enumeration value="EBU R 123: 16b"/>
+      <xs:enumeration value="EBU R 123: 16c"/>
+      <xs:enumeration value="EBU R 123: 16d"/>
+      <xs:enumeration value="EBU R 123: 16e"/>
+      <xs:enumeration value="EBU R 123: 16f"/>
+      <xs:enumeration value="Undefined"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
